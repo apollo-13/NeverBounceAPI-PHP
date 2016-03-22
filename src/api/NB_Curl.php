@@ -41,6 +41,11 @@ trait NB_Curl
      * @var bool Indicates if expected response should be json
      */
     protected $json = true;
+    
+    /**
+     * @var int CURL timeout.
+     */
+    protected $curlTimeout = 15;
 
     /**
      *
@@ -70,6 +75,7 @@ trait NB_Curl
         $this->set_opt(CURLOPT_RETURNTRANSFER, true);
         $this->set_opt(CURLOPT_POST, true);
         $this->set_opt(CURLOPT_POSTFIELDS, http_build_query($data));
+        $this->set_opt(CURLOPT_TIMEOUT, $this->curlTimeout);
     }
 
     /**
